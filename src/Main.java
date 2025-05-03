@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        double valor = Conversor.Conversor("USD","BRL",1);
+
+        System.out.println(valor);
+
     }
 }
