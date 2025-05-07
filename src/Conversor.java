@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class Conversor {
 
-    public static double Conversor(String deMoeda, String paraMoeda, double quantiaConvertida) {
+    public static double ExibirConversor(String deMoeda, String paraMoeda, double quantiaConvertida) {
         double result = 0.0;
         try {
             String apiKey = "7c79d32d3e10af525d1a53ba";
@@ -50,5 +50,39 @@ public class Conversor {
         }
 
         return result;
+    }
+    public void CotacaoAtual(){
+
+        try{
+        String link = "https://v6.exchangerate-api.com/v6/7c79d32d3e10af525d1a53ba/latest/USD";
+        URL url = new URL(link);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        StringBuilder response = new StringBuilder();
+        String line;
+
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+        reader.close();
+
+        // Usa Gson pra converter a resposta para Map
+        Gson gson = new Gson();
+        Map<String, Object> map = gson.fromJson(response.toString(), new TypeToken<Map<String, Object>>() {}.getType());
+
+        // Pega o mapa de conversion_rates
+        Map<String, Double> rates = (Map<String, Double>) map.get("conversion_rates");
+
+        // Pega a taxa da moeda de destino
+
+        double cotacaoAtual= rates.get("BRL");
+
+            System.out.println("Cotação do dolar hoje R$:" + String.format("%.2f", cotacaoAtual));
+
+        } catch (Exception e) {
+            System.out.println("Erro ao converter moeda: " + e.getMessage());
+        }
     }
 }
