@@ -29,6 +29,15 @@ Este é um projeto simples de **Conversor de Moedas** desenvolvido em Java, util
 
 ---
 
+##  📸 Capturas de telas
+- Menu Inicial
+- ![image](https://github.com/user-attachments/assets/1dd00e6b-8ae1-4a74-b26f-3d77366ab8e5)
+  
+- Opção 1 selecionada
+- ![image](https://github.com/user-attachments/assets/1eff7bfb-17a0-42fb-87a1-149222cf80fa)
+
+---
+
 ## 😎 Autor
 
 - Desenvolvido por Rodrigo Soares
